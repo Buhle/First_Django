@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>{{ title }}</title>
+
+	</head>
+<body bgcolor=yellow>
+	<img src="/statics/images/Octocat.png" width="40" />
+	<h1>List of contacts</h1>
+	<ul>
+	{% for item in contacts %}
+		<li>{{ item.firstname }} {{ item.lastname }}</li>
+	{% endfor %}
+	</ul>
+</body>
+</html>
