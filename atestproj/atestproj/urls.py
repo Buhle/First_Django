@@ -16,5 +16,5 @@ urlpatterns = patterns('',
 
 	url(r'^index$', 'contact_app.views.index', name='index'),
 
-
+	url(r'^list$', 'contact_app.views.contact_list_gender', name='list'),
 )
