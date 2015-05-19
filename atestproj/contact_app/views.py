@@ -27,3 +27,10 @@ def test_template (request):
 def index (request):
 
 	return render(request, 'index.html')
+
+def contact_list_gender(request):
+	details=Contact.objects.all()
+	b = "<h1>Contacts</h1>"
+	for d in details:
+		b+=d.firstname+"<br/> "+d.lastname + "<br/>"+d.gender+"<br/>"
+	return HttpResponse(b)
