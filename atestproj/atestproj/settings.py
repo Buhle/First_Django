@@ -39,10 +39,11 @@ INSTALLED_APPS = (
 
     'rest_framework',
     'contact_app',
+    'cassandra_app',
 
 )
 
-#INSTALLED_APPS += ('contact_app',)
+INSTALLED_APPS = ('django_cassandra_engine',) + INSTALLED_APPS
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -66,6 +67,20 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'contact.db'),
+    },
+    'cassandra': {
+        'ENGINE':       'django_cassandra_engine',
+        'NAME':         'mytest',
+        'TEST_NAME':    'test_mytest',
+        'HOST':         '127.0.0.1',                                         # development
+        'PORT':         9042,
+        'OPTIONS': {
+            'replication': {
+                'strategy_class': 'SimpleStrategy',
+                'replication_factor': 1
+            }
+        },
+
     }
 }
 
@@ -95,4 +110,3 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
-
